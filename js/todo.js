@@ -24,8 +24,9 @@ function createTodoItem(title) {
     deleteButton.innterText = 'Delete';
     deleteButton.className = 'delete';
 
-    const li = document.createElement('li');
+    const listItem = document.createElement('li');
     listItem.className = 'todo-item';
+
     //Place all created items into li
     listItem.appendChild(checkbox);
     listItem.appendChild(label);
@@ -33,12 +34,13 @@ function createTodoItem(title) {
     listItem.appendChild(editButton);
     listItem.appendChild(deleteButton);
     console.log(listItem);
+
     return listItem;
 }
 
 
 function addTodoItem(event) {
-    event.preventDedault(); //Stop send to server. Don't reload page when submitted
+    event.preventDefault(); //Stop send to server. Don't reload page when submitted
 
     //if empty string submitted show error
     if(addInput.value === '') return alert('Please, enter the name for the task');
