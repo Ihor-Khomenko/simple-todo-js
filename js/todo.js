@@ -1,44 +1,31 @@
-//Create DOM element
-function createTodoItem(title) {
-    const checkbox = document.createElement('input');
-    //change attribute type and set className
-    checkbox.type = 'checkbox';
-    checkbox.className = 'checkbox';
-
-    const label = document.createElement('label');
+//fasad
+function createElement(tag, props, ...children) {
+    const element = document.createElement(tag);
     
-    //Set inner text for label
-    label.innerText = title;
-    label.className = 'title';
+    Object.keys(props).forEach(key => element[key] = props[key]);
 
-    const editInput = document.createElement('input');
-    editInput.type = 'text';
-    editInput.className = 'textfield';
+    if (children.length > 0) {
+        children.forEach(child => {
+            if (typeof child === 'string') {
+                child = document.createTextNode(child);
+            }
+            element.appendChild(child);
+        })
+    }
+    return element;
+}
 
-    const editButton = document.createElement('button');
-    //Set inner text for edit button
-    editButton.innerText = 'Edit';
-    editButton.className = 'edit';
-
-    const deleteButton = document.createElement('button');
-    //Set inner text for delete button
-    deleteButton.innerText = 'Delete';
-    deleteButton.className = 'delete';
-
-    //Create li element
-    const listItem = document.createElement('li');
-    listItem.className = 'todo-item';
-
-    //Place all created items into li
-    listItem.appendChild(checkbox);
-    listItem.appendChild(label);
-    listItem.appendChild(editInput);
-    listItem.appendChild(editButton);
-    listItem.appendChild(deleteButton);
-    console.log(listItem);
-
-    bindEvents(listItem); //Subscribe to events Bind items
-
+//Create DOM element
+function createTodoItem(title) 
+{
+    const checkbox = createElement('input', { type: 'checkbox', className: 'checkbox' });
+    const label = createElement('label', { className: 'title' }, title);
+    const editInput = createElement('input', { type: 'text', className: 'textfield' });
+    const editButton = createElement('button', { className: 'edit'}, 'Edit' );
+    const deleteButton = createElement('button', { className: 'delete'}, 'Delete' );
+    //Create li element and place all element inside
+    const listItem = createElement('li', { className: 'todo-item' }, checkbox, label, editInput, editButton, deleteButton);
+    bindEvents(listItem);
     return listItem;
 }
 
