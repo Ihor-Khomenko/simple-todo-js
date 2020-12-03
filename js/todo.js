@@ -1,3 +1,5 @@
+//pattern IIFE - Immediately invoked function expression
+((document) => {
 //fasad
 function createElement(tag, props, ...children) {
     const element = document.createElement(tag);
@@ -94,3 +96,4 @@ function main() {
 
 //call main function
 main();
+})(document);
