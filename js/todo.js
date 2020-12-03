@@ -97,6 +97,13 @@ function deleteTodoItem() {
 const todoForm = document.getElementById('todo-form');
 const addInput = document.getElementById('add-input');
 const todoList = document.getElementById('todo-list');
-const todoItems = document.querySelectorAll('.todo-item');
+const todoItems = document.querySelectorAll('.todo-item'); //array
 
-todoForm.addEventListener('submit', addTodoItem);
+//Function makes existing items editable and deletable
+function main() {
+    todoForm.addEventListener('submit', addTodoItem);
+    todoItems.forEach(item => bindEvents(item));
+}
+
+//call main function
+main();
