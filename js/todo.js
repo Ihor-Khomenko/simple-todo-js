@@ -90,7 +90,8 @@ function editTodoItem() {
 }
 
 function deleteTodoItem() {
-
+    const listItem = this.parentNode;
+    todoList.removeChild(listItem);
 };
 
 const todoForm = document.getElementById('todo-form');
