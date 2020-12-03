@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "npx": "^3.0.0"
+  },
+  "name": "simple-todo-js",
+  "devDependencies": {
+    "playwright": "^1.6.2"
+  }
+}
