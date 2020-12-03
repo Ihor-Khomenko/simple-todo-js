@@ -32,7 +32,8 @@ function createTodoItem(title) {
     listItem.appendChild(editInput);
     listItem.appendChild(editButton);
     listItem.appendChild(deleteButton);
-
+    console.log(listItem);
+    return listItem;
 }
 
 
